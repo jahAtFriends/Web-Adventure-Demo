@@ -83,13 +83,13 @@ class Scene {
     * Otherwise, it is supported to display the first scene when it has fully loaded using
     * a callback function. See example 3 for details.
     *
-    * @param {string} fileneame - The filename of the corresponding html file (relative
+    * @param {string} [fileneame] - The filename of the corresponding html file (relative
     * to the base-path of the Scene class)
-    * @param {Scene} left - The Scene that will be progressed to by choosing the "left"
+    * @param {Scene} [left=this] - The Scene that will be progressed to by choosing the "left"
     * option on the current Scene. By default, each Scene is its own left scene.
-    * @param {Scene} right - The Scene that will be progressed to by choosing the "right"
+    * @param {Scene} [right=this] - The Scene that will be progressed to by choosing the "right"
     * option on the current Scene. By default, each Scene is its own right scene.
-    * @param {onLoadCallback} cb - A function to run when the HTML file is fully loaded.
+    * @param {onLoadCallback} [cb] - A function to run when the HTML file is fully loaded.
     *
     * @example <caption> Example 1: Creating a mini-story</caption>
     * //Creates a 3 Scene story
@@ -109,14 +109,14 @@ class Scene {
     * }
     * let scene1 = new Scene("scene1.html", scene2, scene3, cb); //Ensures display occurs after html loads.
     */
-    constructor(filename, left, right, cb = () => undefined) {
+    constructor(filename, left = this, right = this, cb = () => undefined) {
         //Set the default html content, then try to import.
         this.#html = "<p>This is a Blank Scene! Use the method loadContent(url) to add html content.</p>";
         if (typeof filename === 'string')
             this.#loadHTMLFromURL(filename, cb);
         
-        this.#left = left !== undefined ? left : this;
-        this.#right = right !== undefined ? right : this;
+        this.#left = left;
+        this.#right = right;
     }
     
     /**
