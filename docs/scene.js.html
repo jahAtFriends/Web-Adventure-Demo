@@ -1,4 +1,32 @@
-/*
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <title>JSDoc: Source: scene.js</title>
+
+    <script src="scripts/prettify/prettify.js"> </script>
+    <script src="scripts/prettify/lang-css.js"> </script>
+    <!--[if lt IE 9]>
+      <script src="//html5shiv.googlecode.com/svn/trunk/html5.js"></script>
+    <![endif]-->
+    <link type="text/css" rel="stylesheet" href="styles/prettify-tomorrow.css">
+    <link type="text/css" rel="stylesheet" href="styles/jsdoc-default.css">
+</head>
+
+<body>
+
+<div id="main">
+
+    <h1 class="page-title">Source: scene.js</h1>
+
+    
+
+
+
+    
+    <section>
+        <article>
+            <pre class="prettyprint source linenums"><code>/*
 *
 * Produced by the Quaker Advanced Technology Lab
 * (c) 2022 Joel Hammer
@@ -12,7 +40,7 @@
 *
 *
 * To include this code in your HTML project, use the following html code:
-* <script type="text/javascript" src="https://jahatfriends.github.io/Web-Adventure-Demo/scene.js"></script>
+* &lt;script type="text/javascript" src="https://jahatfriends.github.io/Web-Adventure-Demo/scene.js">&lt;/script>
 * 
 * 
 * ...or download and host this file locally.
@@ -21,17 +49,17 @@
 
 
 /**
-* <em>The Scene class is part of the Create Your Own Adventure Project
-* for the course Web Design and Development.</em>
-* <br/><br/>
+* &lt;em>The Scene class is part of the Create Your Own Adventure Project
+* for the course Web Design and Development.&lt;/em>
+* &lt;br/>&lt;br/>
 * A "Create Your Own Adventure" story is, essentially, a collection
-* of individual <em> Scenes </em>. There is some initial scene which
+* of individual &lt;em> Scenes &lt;/em>. There is some initial scene which
 * branches off into 2 possible subsequent scenes, depending on the user's
 * selection. From this new scene, two more choices are presented so that
 * there are a variety of paths through the story which can be traversed
 * depending on the selections made.
-* <br/>
-* <br/>
+* &lt;br/>
+* &lt;br/>
 *
 * This class deines an object which represents the scenes of a CYOA story.
 * Each scene contains some html to be injected into a story page. They
@@ -39,17 +67,17 @@
 * that can be selected by the user.
 *
 * To create the HTML code for a given scene, you should first save each scene
-* as an HTML file (omitting the <code>&lt;html&gt;, &lt;head&gt;, and &lt;body&gt;</code>
-* tags). Ensure that <em>all</em> scene files are in the same directory. This is
+* as an HTML file (omitting the &lt;code>&amp;lt;html&amp;gt;, &amp;lt;head&amp;gt;, and &amp;lt;body&amp;gt;&lt;/code>
+* tags). Ensure that &lt;em>all&lt;/em> scene files are in the same directory. This is
 * known as the "base" or "data" directory in this class, and it is uniform
-* accross <em> all </em> Scene objects. To set the base directory, use the
+* accross &lt;em> all &lt;/em> Scene objects. To set the base directory, use the
 * command:
-* <br/>
-* <br/>
-* <code> Scene.setDataPath("path-to-scene-html-files"); </code>
-* <br/>
-* <br/>
-* It is recommended to use <em>relative</em> paths. In this case, we mean relative
+* &lt;br/>
+* &lt;br/>
+* &lt;code> Scene.setDataPath("path-to-scene-html-files"); &lt;/code>
+* &lt;br/>
+* &lt;br/>
+* It is recommended to use &lt;em>relative&lt;/em> paths. In this case, we mean relative
 * to the file into which this script is being imported. By default the base-path
 * is "./" which is suitable if the scene html files are in the same directory
 * as the importing html file.
@@ -72,10 +100,10 @@ class Scene {
     /**
     * Constructs a new Scene with the given properties. By default, a sample
     * HTML content will be inserted and left and right scenes are self-referential.
-    * <br/>
-    * <br/>
-    * See examples below. Note that HTML content is loaded into the scene <em>asyncrounously</em>,
-    * so that it is possible that the a call to display the first scene will occur <em>before</em>
+    * &lt;br/>
+    * &lt;br/>
+    * See examples below. Note that HTML content is loaded into the scene &lt;em>asyncrounously&lt;/em>,
+    * so that it is possible that the a call to display the first scene will occur &lt;em>before&lt;/em>
     * that scene has finished loading. This will result in the display of the incorrect (default)
     * html text. See example 2 for more specifics.
     * To avoid this, consider displaying the first scene after the user clicks a button.
@@ -91,18 +119,18 @@ class Scene {
     * option on the current Scene. By default, each Scene is its own right scene.
     * @param {onLoadCallback} cb - A function to run when the HTML file is fully loaded.
     *
-    * @example <caption> Example 1: Creating a mini-story</caption>
+    * @example &lt;caption> Example 1: Creating a mini-story&lt;/caption>
     * //Creates a 3 Scene story
     * let scene3 = new Scene("scene3.html"); //By default, this scene links back to itself
     * let scene2 = new Scene("scene2.html"); //This scene also has two self-links
     * let scene1 = new Scene("scene1.html", scene2, scene3);
     *
-    * @example <caption> Example 2: Caution with importation </caption>
+    * @example &lt;caption> Example 2: Caution with importation &lt;/caption>
     * //Likely to result in example html although the import succeeded.
     * let scene1 = new Scene("scene1.html", scene2, scene3);
     * document.getElementById.innerHTML = scene1.getHTML(); //Runs before html load completes
     *
-    * @example <caption> Example 3: Callback to handle first scene </caption>
+    * @example &lt;caption> Example 3: Callback to handle first scene &lt;/caption>
     *
     * let cb = function() {
     *   document.getElementById.innerHTML = scene1.getHTML();
@@ -111,7 +139,7 @@ class Scene {
     */
     constructor(filename, left, right, cb = () => undefined) {
         //Set the default html content, then try to import.
-        this.#html = "<p>This is a Blank Scene! Use the method loadContent(url) to add html content.</p>";
+        this.#html = "&lt;p>This is a Blank Scene! Use the method loadContent(url) to add html content.&lt;/p>";
         if (typeof filename === 'string')
             this.#loadHTMLFromURL(filename, cb);
         
@@ -203,4 +231,26 @@ class Scene {
         xhttp.open("GET", url);
         xhttp.send();
     }
-}
+}</code></pre>
+        </article>
+    </section>
+
+
+
+
+</div>
+
+<nav>
+    <h2><a href="index.html">Home</a></h2><h3>Classes</h3><ul><li><a href="Scene.html">Scene</a></li></ul><h3><a href="global.html">Global</a></h3>
+</nav>
+
+<br class="clear">
+
+<footer>
+    Documentation generated by <a href="https://github.com/jsdoc/jsdoc">JSDoc 3.6.11</a> on Wed Aug 03 2022 18:36:20 GMT-0400 (Eastern Daylight Time)
+</footer>
+
+<script> prettyPrint(); </script>
+<script src="scripts/linenumber.js"> </script>
+</body>
+</html>
