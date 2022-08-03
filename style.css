@@ -1,0 +1,33 @@
+.choice-text {
+    display: none;
+}
+
+.title {
+    color: white;
+    background: blue;
+    text-align: center;
+}
+
+#main-title {
+    font-family: garamond;
+    font-size: 50px;
+}
+
+#main-subtitle {
+    font-family: Brush Script MT, Brush Script Std, cursive;
+    font-size: 30px;
+    font-style: italic;
+}
+
+#welcome-text {
+    text-align: center;
+}
+
+#nav {
+    text-align: center;
+}
+
+#scene-1 .scene-title {
+    font-size: 25px;
+    font-weight: bold;
+}

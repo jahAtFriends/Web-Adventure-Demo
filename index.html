@@ -1,0 +1,51 @@
+<!doctype html>
+<html>
+<head>
+<meta charset="utf-8">
+<link rel="stylesheet" href="./style.css">
+<title>CYOA</title>
+<script type="text/javascript" src="./scene.js"></script>
+<script type="text/javascript">
+  const s0 = new Scene();
+  const s1 = new Scene("s1.html");
+  const s2 = new Scene("s2.html",s1,s1);
+  const s3 = new Scene("s3.html",s1,s1);
+  s0.setLeftScene(s1);
+  s0.setRightScene(s1);
+  s1.setLeftScene(s2);
+  s1.setRightScene(s3);
+  
+  let currentScene = s0;
+  
+  function goLeft() {
+    currentScene = currentScene.goLeft();
+    document.getElementById("scene-body").innerHTML = currentScene.getHTML();
+    updateButtons();
+  }
+  
+  function goRight() {
+    currentScene = currentScene.goRight();
+    document.getElementById("scene-body").innerHTML = currentScene.getHTML();
+    updateButtons();
+  }
+  
+  function updateButtons() {
+    let opt1 = document.getElementById("choice-1-text").innerHTML;
+    let opt2 = document.getElementById("choice-2-text").innerHTML;
+    
+    document.getElementById("go-left").innerHTML = opt1;
+    document.getElementById("go-right").innerHTML = opt2;
+  }
+  
+</script>
+</head>
+<body>
+  <div class="title" id="main-title">The Adventures of Robert Frost</div>
+  <div class="title" id="main-subtitle">A Create Your Own Adventure Story</div>
+  <div id="scene-body"> <div id="welcome-text">Welcome to Create Your Own Adventure! Click Either button to begin!</div></div>
+  <div id="nav">
+    <button id="go-left" onclick="goLeft()"> Click to begin</button>
+    <button id="go-right" onclick="goRight()"> Click to begin</button>
+  </div>
+</body>
+</html>
